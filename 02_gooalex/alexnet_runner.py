@@ -1,14 +1,11 @@
-import torch
-import torchvision
-from torchvision import datasets, models, transforms
-import torch.nn as nn
-import torch.optim as optim
-import time
-import os
-import copy
 import torch.nn.functional as F
-
-
+import torch.optim as optim
+import torch.nn as nn
+from torchvision import datasets, models, transforms
+import torchvision
+import torch
+import alexnet_module_
+from model_training_ import train_model
 # Set up preprocessing of CIFAR-10 images to 3x224x224 with normalization
 # using the magic ImageNet means and standard deviations. You can try
 # RandomCrop, RandomHorizontalFlip, etc. during training to obtain
@@ -28,7 +25,8 @@ train_dataset = torchvision.datasets.CIFAR10(root='/root/data_keep', train=True,
 # Split the training set into training and validation sets randomly.
 # CIFAR-10 train contains 50,000 examples, so let's split 80%/20%.
 
-train_dataset, val_dataset = torch.utils.data.random_split(train_dataset, [40000, 10000])
+train_dataset, val_dataset = torch.utils.data.random_split(train_dataset, [
+                                                           40000, 10000])
 
 # Download the test set. If you use data augmentation transforms for the training set,
 # you'll want to use a different transformer here.
@@ -55,3 +53,24 @@ val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=4,
                                              shuffle=False, num_workers=2)
 test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=4,
                                               shuffle=False, num_workers=2)
+val = next(iter(train_dataloader))
+
+# Device 'cuda' or 'cuda:0' means GPU slot 0.
+# If you have more than one GPU, you can select other GPUs using 'cuda:1', 'cuda:2', etc.
+# In terminal (Linux), you can check memory using in each GPU by using command
+# $ nvidia-smi
+device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+print('Using device', device)
+
+alexnet_module = alexnet_module_.AlexNetModule(10)
+# CrossEntropyLoss for multinomial classification (because we have 10 classes)
+criterion = nn.CrossEntropyLoss()
+# parameters = weights
+params_to_update = alexnet_module.parameters()
+# Use scholastic gradient descent for update weights in model with learning rate 0.001 and momentum 0.9
+optimizer = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
+
+dataloaders = {'train': train_dataloader, 'val': val_dataloader}
+
+best_model, val_acc_history, loss_acc_history = train_model(
+    alexnet_module.to(device), dataloaders, criterion, device, optimizer, 1, 'alex_sequential_lr_0.001_bestsofar')
