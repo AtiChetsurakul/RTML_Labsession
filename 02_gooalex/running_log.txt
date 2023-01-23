@@ -1,0 +1,37 @@
+Alex for no LRN
+training Log
+
+Files already downloaded and verified
+Files already downloaded and verified
+Using device cuda:0
+Epoch 0/14
+----------
+train Loss: 1.7332 Acc: 0.3571
+Epoch time taken:  129.04249477386475
+val Loss: 1.3887 Acc: 0.4787
+Epoch time taken:  144.1738519668579
+
+Epoch 1/14
+----------
+train Loss: 1.2108 Acc: 0.5676
+Epoch time taken:  123.3355724811554
+val Loss: 1.0712 Acc: 0.6304
+Epoch time taken:  138.5637845993042
+
+Epoch 2/14
+----------
+train Loss: 0.9717 Acc: 0.6599
+Epoch time taken:  126.47823739051819
+val Loss: 0.8531 Acc: 0.7061
+Epoch time taken:  141.85970425605774
+
+Epoch 3/14
+----------
+train Loss: 0.8282 Acc: 0.7117
+Epoch time taken:  125.80626034736633
+val Loss: 0.8357 Acc: 0.7148
+Epoch time taken:  141.43851709365845
+
+Epoch 4/14
+----------
+

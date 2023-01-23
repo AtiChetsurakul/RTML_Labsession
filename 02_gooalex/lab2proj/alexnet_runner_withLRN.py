@@ -4,7 +4,7 @@ import torch.nn as nn
 from torchvision import datasets, models, transforms
 import torchvision
 import torch
-import alexnet_module_
+import alexnet_module_LRN
 from model_training_ import train_model
 import pickle
 # Set up preprocessing of CIFAR-10 images to 3x224x224 with normalization
@@ -60,10 +60,10 @@ val = next(iter(train_dataloader))
 # If you have more than one GPU, you can select other GPUs using 'cuda:1', 'cuda:2', etc.
 # In terminal (Linux), you can check memory using in each GPU by using command
 # $ nvidia-smi
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 print('Using device', device)
 
-alexnet_module = alexnet_module_.AlexNetModule(10)
+alexnet_module = alexnet_module_LRN.AlexNetModule(10)
 # CrossEntropyLoss for multinomial classification (because we have 10 classes)
 criterion = nn.CrossEntropyLoss()
 # parameters = weights
@@ -74,8 +74,8 @@ optimizer = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
 dataloaders = {'train': train_dataloader, 'val': val_dataloader}
 
 best_model, val_acc_history, loss_acc_history = train_model(
-    alexnet_module.to(device), dataloaders, criterion, device, optimizer, 15, 'alex_sequential_lr_0.001_bestsofarNO')
+    alexnet_module.to(device), dataloaders, criterion, device, optimizer, 15, 'alex_sequential_lr_0.001_bestsofar_WITHLRN')
 
 
-with open('root/models/lossAndAccForAlex.atikeep', 'wb') as handle:
+with open('root/models/lossAndAccForAlex_LRN.atikeep', 'wb') as handle:
     pickle.dump((val_acc_history, loss_acc_history), handle)
