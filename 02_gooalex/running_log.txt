@@ -34,4 +34,611 @@ Epoch time taken:  141.43851709365845
 
 Epoch 4/14
 ----------
+train Loss: 0.7231 Acc: 0.7479
+Epoch time taken:  126.35443091392517
+val Loss: 0.7797 Acc: 0.7368
+Epoch time taken:  142.16438722610474
 
+Epoch 5/14
+----------
+train Loss: 0.6362 Acc: 0.7799
+Epoch time taken:  128.23895454406738
+val Loss: 0.6904 Acc: 0.7646
+Epoch time taken:  143.70173954963684
+
+Epoch 6/14
+----------
+train Loss: 0.5756 Acc: 0.8002
+Epoch time taken:  121.87003350257874
+val Loss: 0.6810 Acc: 0.7742
+Epoch time taken:  137.38799810409546
+
+Epoch 7/14
+----------
+train Loss: 0.5126 Acc: 0.8215
+Epoch time taken:  124.98204731941223
+val Loss: 0.6844 Acc: 0.7713
+Epoch time taken:  140.5471534729004
+
+Epoch 8/14
+----------
+train Loss: 0.4601 Acc: 0.8410
+Epoch time taken:  125.39032077789307
+val Loss: 0.6919 Acc: 0.7759
+Epoch time taken:  140.764390707016
+
+Epoch 9/14
+----------
+train Loss: 0.4229 Acc: 0.8546
+Epoch time taken:  124.3941011428833
+val Loss: 0.6404 Acc: 0.7863
+Epoch time taken:  139.79756498336792
+
+Epoch 10/14
+----------
+train Loss: 0.3900 Acc: 0.8673
+Epoch time taken:  125.5171115398407
+val Loss: 0.6690 Acc: 0.7813
+Epoch time taken:  140.24062490463257
+
+Epoch 11/14
+----------
+python3 alexnet_rtrain Loss: 0.3623 Acc: 0.8784
+Epoch time taken:  125.28562879562378
+val Loss: 0.7100 Acc: 0.7684
+Epoch time taken:  141.04636883735657
+
+Epoch 12/14
+Epoch 12/14
+----------
+train Loss: 0.3500 Acc: 0.8813
+Epoch time taken:  126.18097972869873
+val Loss: 0.6933 Acc: 0.7867
+Epoch time taken:  141.25087976455688
+
+Epoch 13/14
+----------
+train Loss: 0.3299 Acc: 0.8855
+Epoch time taken:  125.91453957557678
+val Loss: 0.6634 Acc: 0.7914
+Epoch time taken:  141.09375619888306
+
+Epoch 14/14
+----------
+train Loss: 0.3075 Acc: 0.8953
+Epoch time taken:  125.97004103660583
+val Loss: 0.7052 Acc: 0.7849
+Epoch time taken:  141.8025779724121
+
+
+alex
+LRN
+        Files already downloaded and verified
+Files already downloaded and verified
+Using device cuda:0
+Epoch 0/14
+----------
+train Loss: 1.8579 Acc: 0.3057
+Epoch time taken:  131.51616668701172
+val Loss: 1.4758 Acc: 0.4606
+Epoch time taken:  146.93891835212708
+
+Epoch 1/14
+----------
+train Loss: 1.2910 Acc: 0.5317
+Epoch time taken:  130.82447838783264
+val Loss: 1.0396 Acc: 0.6324
+Epoch time taken:  146.22884106636047
+
+Epoch 2/14
+----------
+train Loss: 1.0042 Acc: 0.6480
+Epoch time taken:  130.1821312904358
+val Loss: 0.9178 Acc: 0.6801
+Epoch time taken:  145.69289684295654
+
+Epoch 3/14
+----------
+train Loss: 0.8432 Acc: 0.7066
+Epoch time taken:  130.61677598953247
+val Loss: 0.8533 Acc: 0.7003
+Epoch time taken:  145.58730459213257
+
+Epoch 4/14
+----------
+train Loss: 0.7292 Acc: 0.7476
+Epoch time taken:  127.44633293151855
+val Loss: 0.7517 Acc: 0.7403
+Epoch time taken:  142.45628356933594
+
+Epoch 5/14
+----------
+train Loss: 0.6338 Acc: 0.7796
+Epoch time taken:  129.8324055671692
+val Loss: 0.7048 Acc: 0.7598
+Epoch time taken:  144.8063292503357
+
+Epoch 6/14
+----------
+train Loss: 0.5573 Acc: 0.8089
+Epoch time taken:  129.99955010414124
+val Loss: 0.6268 Acc: 0.7894
+Epoch time taken:  145.1813633441925
+
+Epoch 7/14
+----------
+train Loss: 0.4894 Acc: 0.8302
+Epoch time taken:  130.6538164615631
+val Loss: 0.6873 Acc: 0.7701
+Epoch time taken:  145.4055209159851
+
+Epoch 8/14
+----------
+train Loss: 0.4423 Acc: 0.8474
+Epoch time taken:  133.50815629959106
+val Loss: 0.6316 Acc: 0.7914
+Epoch time taken:  148.62990832328796
+
+Epoch 9/14
+----------
+train Loss: 0.3981 Acc: 0.8630
+Epoch time taken:  128.66598868370056
+val Loss: 0.7129 Acc: 0.7616
+Epoch time taken:  143.91400623321533
+
+Epoch 10/14
+----------
+train Loss: 0.3620 Acc: 0.8747
+Epoch time taken:  131.4279968738556
+val Loss: 0.6234 Acc: 0.7909
+Epoch time taken:  146.81195759773254
+
+Epoch 11/14
+----------
+train Loss: 0.3190 Acc: 0.8899
+Epoch time taken:  130.8992919921875
+val Loss: 0.6463 Acc: 0.7977
+Epoch time taken:  145.93647575378418
+
+Epoch 12/14
+----------
+train Loss: 0.2992 Acc: 0.8976
+Epoch time taken:  130.51200795173645
+val Loss: 0.7032 Acc: 0.7873
+Epoch time taken:  145.5098419189453
+
+Epoch 13/14
+----------
+train Loss: 0.2783 Acc: 0.9034
+Epoch time taken:  129.79099464416504
+val Loss: 0.6972 Acc: 0.7980
+Epoch time taken:  144.25667452812195
+
+Epoch 14/14
+----------
+train Loss: 0.2756 Acc: 0.9055
+Epoch time taken:  129.5887553691864
+val Loss: 0.6623 Acc: 0.7998
+Epoch time taken:  144.6902768611908
+
+
+
+
+log 
+
+root@10c86d735246:~# ls
+data_keep  keep_lab  kept_labOld001  models
+root@10c86d735246:~# cd keep_lab/
+root@10c86d735246:~/keep_lab# ls
+RTML_Labsession
+root@10c86d735246:~/keep_lab# cd RTML_Labsession/
+root@10c86d735246:~/keep_lab/RTML_Labsession# ls
+01_setup  02_gooalex  README.md
+root@10c86d735246:~/keep_lab/RTML_Labsession# cd 02_gooalex/
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex# ls
+README.md  __pycache__  lab2.ipynb  lab2proj
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex# ls
+README.md  __pycache__  lab2.ipynb  lab2proj
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex# cd lab2proj/
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# ls
+__pycache__                             alexnet_module_LRN.py      goo_sequential_lr_0.001_bestsofar.pth  inception_.py
+alex_sequential_lr_0.001_bestsofar.pth  alexnet_runner.py          goog_runner.py                         model_training_.py
+alexnet_module_.py                      alexnet_runner_withLRN.py  goognet_m_.py
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# nvidia-smi
+Mon Jan 23 13:45:39 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.47.03    Driver Version: 510.47.03    CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:84:00.0 Off |                  N/A |
+| 24%   27C    P8    12W / 250W |   1130MiB / 11264MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  On   | 00000000:85:00.0 Off |                  N/A |
+| 38%   65C    P2   234W / 250W |   6752MiB / 11264MiB |     22%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA GeForce ...  On   | 00000000:88:00.0 Off |                  N/A |
+| 34%   57C    P2    80W / 250W |   7850MiB / 11264MiB |     18%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA GeForce ...  On   | 00000000:89:00.0 Off |                  N/A |
+| 32%   53C    P2    83W / 250W |   4722MiB / 11264MiB |     22%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      4238      C                                     161MiB |
+|    0   N/A  N/A      4491      C                                     161MiB |
+|    0   N/A  N/A      6550      C                                     161MiB |
+|    0   N/A  N/A      8554      C                                     161MiB |
+|    0   N/A  N/A      9540      C                                     161MiB |
+|    0   N/A  N/A     30768      C                                     161MiB |
+|    0   N/A  N/A     32155      C                                     161MiB |
+|    1   N/A  N/A     30023      C                                    6749MiB |
+|    2   N/A  N/A     31367      C                                    7847MiB |
+|    3   N/A  N/A     24060      C                                    4719MiB |
++-----------------------------------------------------------------------------+
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# ls
+__pycache__                             alexnet_module_LRN.py      goo_sequential_lr_0.001_bestsofar.pth  inception_.py
+alex_sequential_lr_0.001_bestsofar.pth  alexnet_runner.py          goog_runner.py                         model_training_.py
+alexnet_module_.py                      alexnet_runner_withLRN.py  goognet_m_.py
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# python3 alexnet_runner.py 
+Files already downloaded and verified
+Files already downloaded and verified
+Using device cuda:0
+Epoch 0/14
+----------
+train Loss: 1.7332 Acc: 0.3571
+Epoch time taken:  129.04249477386475
+val Loss: 1.3887 Acc: 0.4787
+Epoch time taken:  144.1738519668579
+
+Epoch 1/14
+----------
+train Loss: 1.2108 Acc: 0.5676
+Epoch time taken:  123.3355724811554
+val Loss: 1.0712 Acc: 0.6304
+Epoch time taken:  138.5637845993042
+
+Epoch 2/14
+----------
+train Loss: 0.9717 Acc: 0.6599
+Epoch time taken:  126.47823739051819
+val Loss: 0.8531 Acc: 0.7061
+Epoch time taken:  141.85970425605774
+
+Epoch 3/14
+----------
+train Loss: 0.8282 Acc: 0.7117
+Epoch time taken:  125.80626034736633
+val Loss: 0.8357 Acc: 0.7148
+Epoch time taken:  141.43851709365845
+
+Epoch 4/14
+----------
+train Loss: 0.7231 Acc: 0.7479
+Epoch time taken:  126.35443091392517
+val Loss: 0.7797 Acc: 0.7368
+Epoch time taken:  142.16438722610474
+
+Epoch 5/14
+----------
+train Loss: 0.6362 Acc: 0.7799
+Epoch time taken:  128.23895454406738
+val Loss: 0.6904 Acc: 0.7646
+Epoch time taken:  143.70173954963684
+
+Epoch 6/14
+----------
+train Loss: 0.5756 Acc: 0.8002
+Epoch time taken:  121.87003350257874
+val Loss: 0.6810 Acc: 0.7742
+Epoch time taken:  137.38799810409546
+
+Epoch 7/14
+----------
+train Loss: 0.5126 Acc: 0.8215
+Epoch time taken:  124.98204731941223
+val Loss: 0.6844 Acc: 0.7713
+Epoch time taken:  140.5471534729004
+
+Epoch 8/14
+----------
+train Loss: 0.4601 Acc: 0.8410
+Epoch time taken:  125.39032077789307
+val Loss: 0.6919 Acc: 0.7759
+Epoch time taken:  140.764390707016
+
+Epoch 9/14
+----------
+train Loss: 0.4229 Acc: 0.8546
+Epoch time taken:  124.3941011428833
+val Loss: 0.6404 Acc: 0.7863
+Epoch time taken:  139.79756498336792
+
+Epoch 10/14
+----------
+train Loss: 0.3900 Acc: 0.8673
+Epoch time taken:  125.5171115398407
+val Loss: 0.6690 Acc: 0.7813
+Epoch time taken:  140.24062490463257
+
+Epoch 11/14
+----------
+python3 alexnet_rtrain Loss: 0.3623 Acc: 0.8784
+Epoch time taken:  125.28562879562378
+val Loss: 0.7100 Acc: 0.7684
+Epoch time taken:  141.04636883735657
+
+Epoch 12/14
+----------
+train Loss: 0.3500 Acc: 0.8813
+Epoch time taken:  126.18097972869873
+val Loss: 0.6933 Acc: 0.7867
+Epoch time taken:  141.25087976455688
+
+Epoch 13/14
+----------
+train Loss: 0.3299 Acc: 0.8855
+Epoch time taken:  125.91453957557678
+val Loss: 0.6634 Acc: 0.7914
+Epoch time taken:  141.09375619888306
+
+Epoch 14/14
+----------
+train Loss: 0.3075 Acc: 0.8953
+Epoch time taken:  125.97004103660583
+val Loss: 0.7052 Acc: 0.7849
+Epoch time taken:  141.8025779724121
+
+Training complete in 35m 44s
+Best val Acc: 0.791400
+Traceback (most recent call last):
+  File "alexnet_runner.py", line 80, in <module>
+    with open('root/models/lossAndAccForAlex.atikeep', 'wb') as handle:
+FileNotFoundError: [Errno 2] No such file or directory: 'root/models/lossAndAccForAlex.atikeep'
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# python3 alexnet_runner_withLRN.py 
+Files already downloaded and verified
+Files already downloaded and verified
+Using device cuda:0
+Epoch 0/14
+----------
+train Loss: 1.8579 Acc: 0.3057
+Epoch time taken:  131.51616668701172
+val Loss: 1.4758 Acc: 0.4606
+Epoch time taken:  146.93891835212708
+
+Epoch 1/14
+----------
+train Loss: 1.2910 Acc: 0.5317
+Epoch time taken:  130.82447838783264
+val Loss: 1.0396 Acc: 0.6324
+Epoch time taken:  146.22884106636047
+
+Epoch 2/14
+----------
+train Loss: 1.0042 Acc: 0.6480
+Epoch time taken:  130.1821312904358
+val Loss: 0.9178 Acc: 0.6801
+Epoch time taken:  145.69289684295654
+
+Epoch 3/14
+----------
+train Loss: 0.8432 Acc: 0.7066
+Epoch time taken:  130.61677598953247
+val Loss: 0.8533 Acc: 0.7003
+Epoch time taken:  145.58730459213257
+
+Epoch 4/14
+----------
+train Loss: 0.7292 Acc: 0.7476
+Epoch time taken:  127.44633293151855
+val Loss: 0.7517 Acc: 0.7403
+Epoch time taken:  142.45628356933594
+
+Epoch 5/14
+----------
+train Loss: 0.6338 Acc: 0.7796
+Epoch time taken:  129.8324055671692
+val Loss: 0.7048 Acc: 0.7598
+Epoch time taken:  144.8063292503357
+
+Epoch 6/14
+----------
+train Loss: 0.5573 Acc: 0.8089
+Epoch time taken:  129.99955010414124
+val Loss: 0.6268 Acc: 0.7894
+Epoch time taken:  145.1813633441925
+
+Epoch 7/14
+----------
+train Loss: 0.4894 Acc: 0.8302
+Epoch time taken:  130.6538164615631
+val Loss: 0.6873 Acc: 0.7701
+Epoch time taken:  145.4055209159851
+
+Epoch 8/14
+----------
+train Loss: 0.4423 Acc: 0.8474
+Epoch time taken:  133.50815629959106
+val Loss: 0.6316 Acc: 0.7914
+Epoch time taken:  148.62990832328796
+
+Epoch 9/14
+----------
+train Loss: 0.3981 Acc: 0.8630
+Epoch time taken:  128.66598868370056
+val Loss: 0.7129 Acc: 0.7616
+Epoch time taken:  143.91400623321533
+
+Epoch 10/14
+----------
+train Loss: 0.3620 Acc: 0.8747
+Epoch time taken:  131.4279968738556
+val Loss: 0.6234 Acc: 0.7909
+Epoch time taken:  146.81195759773254
+
+Epoch 11/14
+----------
+train Loss: 0.3190 Acc: 0.8899
+Epoch time taken:  130.8992919921875
+val Loss: 0.6463 Acc: 0.7977
+Epoch time taken:  145.93647575378418
+
+Epoch 12/14
+----------
+train Loss: 0.2992 Acc: 0.8976
+Epoch time taken:  130.51200795173645
+val Loss: 0.7032 Acc: 0.7873
+Epoch time taken:  145.5098419189453
+
+Epoch 13/14
+----------
+train Loss: 0.2783 Acc: 0.9034
+Epoch time taken:  129.79099464416504
+val Loss: 0.6972 Acc: 0.7980
+Epoch time taken:  144.25667452812195
+
+Epoch 14/14
+----------
+train Loss: 0.2756 Acc: 0.9055
+Epoch time taken:  129.5887553691864
+val Loss: 0.6623 Acc: 0.7998
+Epoch time taken:  144.6902768611908
+
+Training complete in 36m 49s
+Best val Acc: 0.799800
+Traceback (most recent call last):
+  File "alexnet_runner_withLRN.py", line 80, in <module>
+    with open('root/models/lossAndAccForAlex_LRN.atikeep', 'wb') as handle:
+FileNotFoundError: [Errno 2] No such file or directory: 'root/models/lossAndAccForAlex_LRN.atikeep'
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj# client_loop: send disconnect: Broken pipe
+client_loop: send disconnect: Broken pipe
+client_loop: send disconnect: Broken pipe
+atichetsurakul@192 ~ % 
+
+
+
+goognet 
+
+Files already downloaded and verified
+Files already downloaded and verified
+Using device cuda:0
+Epoch 0/14
+----------
+ train Loss: 2.5568 Acc: 0.3886
+Epoch time taken:  632.5215356349945
+val Loss: 1.2092 Acc: 0.5708
+Epoch time taken:  676.3093709945679
+
+Epoch 1/14
+----------
+train Loss: 1.6232 Acc: 0.6053
+Epoch time taken:  615.6578347682953
+val Loss: 0.8336 Acc: 0.7110
+Epoch time taken:  658.9074473381042
+
+Epoch 2/14
+----------
+train Loss: 1.2039 Acc: 0.7026
+Epoch time taken:  652.0328226089478
+val Loss: 0.7243 Acc: 0.7539
+Epoch time taken:  697.7968730926514
+
+Epoch 3/14
+----------
+train Loss: 0.9672 Acc: 0.7589
+Epoch time taken:  635.3083808422089
+val Loss: 0.6674 Acc: 0.7772
+Epoch time taken:  680.7115697860718
+
+Epoch 4/14
+----------
+train Loss: 0.8098 Acc: 0.7957
+Epoch time taken:  644.5249762535095
+val Loss: 0.5282 Acc: 0.8196
+Epoch time taken:  689.065553188324
+
+Epoch 5/14
+----------
+train Loss: 0.6978 Acc: 0.8255
+Epoch time taken:  629.2180633544922
+val Loss: 0.5018 Acc: 0.8287
+Epoch time taken:  674.230388879776
+
+Epoch 6/14
+----------
+train Loss: 0.5913 Acc: 0.8518
+Epoch time taken:  634.7979552745819
+val Loss: 0.4662 Acc: 0.8399
+Epoch time taken:  680.1172156333923
+
+Epoch 7/14
+----------
+train Loss: 0.5053 Acc: 0.8719
+Epoch time taken:  646.3124096393585
+val Loss: 0.4832 Acc: 0.8418
+Epoch time taken:  691.1962049007416
+
+Epoch 8/14
+----------
+train Loss: 0.4253 Acc: 0.8935
+Epoch time taken:  644.74480676651
+val Loss: 0.4523 Acc: 0.8504
+Epoch time taken:  689.2962558269501
+
+Epoch 9/14
+----------
+train Loss: 0.3603 Acc: 0.9106
+Epoch time taken:  646.070042848587
+val Loss: 0.4548 Acc: 0.8477
+Epoch time taken:  689.7436599731445
+
+Epoch 10/14
+----------
+train Loss: 0.3065 Acc: 0.9240
+Epoch time taken:  660.4888269901276
+val Loss: 0.4610 Acc: 0.8538
+Epoch time taken:  709.9067893028259
+
+Epoch 11/14
+----------
+train Loss: 0.2618 Acc: 0.9344
+Epoch time taken:  677.2157781124115
+val Loss: 0.4301 Acc: 0.8600
+Epoch time taken:  723.9746737480164
+
+Epoch 12/14
+----------
+train Loss: 0.2134 Acc: 0.9472
+Epoch time taken:  650.7976036071777
+val Loss: 0.4659 Acc: 0.8600
+Epoch time taken:  695.4899678230286
+
+Epoch 13/14
+----------
+train Loss: 0.1819 Acc: 0.9556
+Epoch time taken:  651.5501749515533
+val Loss: 0.4560 Acc: 0.8622
+Epoch time taken:  700.1129810810089
+
+Epoch 14/14
+----------
+train Loss: 0.1478 Acc: 0.9657
+Epoch time taken:  678.4860897064209
+val Loss: 0.4775 Acc: 0.8610
+Epoch time taken:  724.4103693962097
+
+Training complete in 173m 8s
+Best val Acc: 0.862200
+root@10c86d735246:~/keep_lab/RTML_Labsession/02_gooalex/lab2proj#  
+
+try.atikeep is log of val acc and val loss

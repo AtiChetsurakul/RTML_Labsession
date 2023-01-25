@@ -2,6 +2,8 @@ import time
 import torch
 import copy
 
+import torch.nn as nn
+
 
 def train_model(model, dataloaders, criterion, device, optimizer, num_epochs=5, weights_name='weight_save', is_inception=False,):
     '''
@@ -73,10 +75,11 @@ def train_model(model, dataloaders, criterion, device, optimizer, num_epochs=5, 
                     # calculate the loss on.
                     if is_inception and phase == 'train':
                         # From https://discuss.pytorch.org/t/how-to-optimize-inception-model-with-auxiliary-classifiers/7958
-                        outputs, aux_outputs = model(inputs)
+                        outputs, aux_outputs, aux_outputs2 = model(inputs)
                         loss1 = criterion(outputs, labels)
                         loss2 = criterion(aux_outputs, labels)
-                        loss = loss1 + 0.4 * loss2
+                        loss3 = criterion(aux_outputs2, labels)
+                        loss = loss1 + 0.3 * (loss2*loss3)
                     else:
                         outputs = model(inputs)
                         loss = criterion(outputs, labels)
@@ -126,3 +129,44 @@ def train_model(model, dataloaders, criterion, device, optimizer, num_epochs=5, 
     print('Best val Acc: {:4f}'.format(best_acc))
     model.load_state_dict(best_model_wts)
     return model, val_acc_history, loss_acc_history
+
+
+def evaluate(model, iterator, criterion, device):
+
+    total = 0
+    correct = 0
+    epoch_loss = 0
+    epoch_acc = 0
+
+    predicteds = []
+    trues = []
+
+    model.eval()
+
+    with torch.no_grad():
+
+        for batch, labels in iterator:
+
+            # Move tensors to the configured device
+            batch = batch.to(device)
+            labels = labels.to(device)
+
+            predictions = model(batch.float())
+
+            loss = criterion(predictions, labels.long())
+
+            predictions = nn.functional.softmax(predictions, dim=1)
+            # returns max value, indices
+            _, predicted = torch.max(predictions.data, 1)
+
+            predicteds.append(predicted)
+            trues.append(labels)
+            total += labels.size(0)  # keep track of total
+            # .item() give the raw number
+            correct += (predicted == labels).sum().item()
+            acc = 100 * (correct / total)
+
+            epoch_loss += loss.item()
+            epoch_acc += acc
+
+    return epoch_loss / len(iterator), epoch_acc / len(iterator), predicteds, trues

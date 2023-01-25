@@ -1,3 +1,4 @@
+import pickle
 import torch.nn.functional as F
 import torch.optim as optim
 import torch.nn as nn
@@ -12,8 +13,8 @@ from model_training_ import train_model
 # slightly better generalization.
 
 preprocess = transforms.Compose([
-    transforms.Resize(36),
-    transforms.CenterCrop(32),
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
     transforms.ToTensor(),
     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
 
@@ -59,7 +60,7 @@ val = next(iter(train_dataloader))
 # If you have more than one GPU, you can select other GPUs using 'cuda:1', 'cuda:2', etc.
 # In terminal (Linux), you can check memory using in each GPU by using command
 # $ nvidia-smi
-device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Using device', device)
 
 goog_module = goognet_m_.GoogLeNet()
@@ -73,4 +74,7 @@ optimizer = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
 dataloaders = {'train': train_dataloader, 'val': val_dataloader}
 
 best_model, val_acc_history, loss_acc_history = train_model(
-    goog_module.to(device), dataloaders, criterion, device, optimizer, 1, 'goo_sequential_lr_0.001_bestsofar')
+    goog_module.to(device), dataloaders, criterion, device, optimizer, 15, 'goo_sequential_lr_0.001_bestsofar', is_inception=True)
+
+with open('/root/models/try.atikeep', 'wb') as handle:
+    pickle.dump((val_acc_history, loss_acc_history), handle)

@@ -60,7 +60,7 @@ val = next(iter(train_dataloader))
 # If you have more than one GPU, you can select other GPUs using 'cuda:1', 'cuda:2', etc.
 # In terminal (Linux), you can check memory using in each GPU by using command
 # $ nvidia-smi
-device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Using device', device)
 
 alexnet_module = alexnet_module_LRN.AlexNetModule(10)
