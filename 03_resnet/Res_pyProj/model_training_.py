@@ -2,6 +2,8 @@ from copy import deepcopy
 import time
 import torch
 
+import torch.nn as nn
+
 
 def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25, weights_name='weight_save', is_inception=False):
     '''
@@ -116,3 +118,44 @@ def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25,
     # load best model weights
     model.load_state_dict(best_model_wts)
     return model, val_acc_history, loss_acc_history
+
+
+def evaluate(model, iterator, criterion, device):
+
+    total = 0
+    correct = 0
+    epoch_loss = 0
+    epoch_acc = 0
+
+    predicteds = []
+    trues = []
+
+    model.eval()
+
+    with torch.no_grad():
+
+        for batch, labels in iterator:
+
+            # Move tensors to the configured device
+            batch = batch.to(device)
+            labels = labels.to(device)
+
+            predictions = model(batch.float())
+
+            loss = criterion(predictions, labels.long())
+
+            predictions = nn.functional.softmax(predictions, dim=1)
+            # returns max value, indices
+            _, predicted = torch.max(predictions.data, 1)
+
+            predicteds.append(predicted)
+            trues.append(labels)
+            total += labels.size(0)  # keep track of total
+            # .item() give the raw number
+            correct += (predicted == labels).sum().item()
+            acc = 100 * (correct / total)
+
+            epoch_loss += loss.item()
+            epoch_acc += acc
+
+    return epoch_loss / len(iterator), epoch_acc / len(iterator), predicteds, trues
