@@ -66,6 +66,7 @@ n_models = 6
 for i in np.arange(n_models):
     # fig, ax = plt.subplots(1, 2, sharex=True, figsize=(20, 5))
     model_acc = []
+    model_loss = []
     for fold, (train_index, val_index) in enumerate(skf.split(dataset, dataset.targets)):
         # print('********************* Fold {}/{} ******************** '.format(fold, 8 - 1),
         #   file=open(f"SE_muff_chi_model{i}.txt", "a"))
@@ -97,8 +98,9 @@ for i in np.arange(n_models):
                                                            criterion, optimizer, device,
                                                            25, f'Result/SE_muff_chi_model{i}')
         model_acc.append(torch.Tensor(val_acc_history).detach().numpy())
+        model_loss.append(torch.Tensor(loss_acc_history).detach().numpy())
         with open(f'Result/SE_muff_acc{i}.atikeep', 'wb') as pic:
-            pickle.dump(model_acc, pic)
+            pickle.dump((model_acc, model_loss), pic)
         # np.save(f'Result/SE_muff_chi_acc{i}.npy',
             # np.array(torch.Tensor(val_acc_history).detach().numpy()))
         # np.save(f'Result/SE_muff_chi_acc{i}.npy', np.array(
