@@ -1,4 +1,6 @@
 *.pth
+*.weights
+*.cfg
 *.pt
 *.jpg
 *.PNG
