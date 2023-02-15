@@ -34,7 +34,7 @@ model = Darknet("cfg/yolov4.cfg")
 model.module_list[114].conv_114 = nn.Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
 
 model.load_weights_("csdarknet53-omega_final.weights",True)
-# model.load_weights("yolov4.weights")
+#model.load_weights("yolov4.weights")
 print("Network successfully loaded")
 
 model.net_info["height"] = 608
