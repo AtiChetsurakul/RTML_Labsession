@@ -8,11 +8,10 @@ import pytorch_mask_rcnn as pmr
     
     
 def main(args):
-    device = torch.device("cuda" if torch.cuda.is_available() and args.use_cuda else "cpu")
+    device = torch.device(f"cuda:{args.device_num}" if torch.cuda.is_available() and args.use_cuda else "cpu")
     cuda = device.type == "cuda"
     if cuda: pmr.get_gpu_prop(show=True)
     print("\ndevice: {}".format(device))
-    
     # d_test = pmr.datasets(args.dataset, args.data_dir, "val", train=True) # VOC 2012. set train=True for eval
     d_test = pmr.datasets(args.dataset, args.data_dir, "val2017", train=True) # COCO 2017
 
@@ -41,7 +40,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="coco")
     parser.add_argument("--data-dir", default="/root/Datasets/coco")
-    parser.add_argument("--ckpt-path", default="/root/keep_lab/RTML_Labsession/05_MARKRCNN/pyProj")
+    parser.add_argument("--ckpt-path", default="/root/keep_lab/RTML_Labsession/05_MARKRCNN/pyProj/maskrcnn_coco-5.pth")
+    parser.add_argument("--device_num",type = str,default= '2')
     parser.add_argument("--iters", type=int, default=3) # number of iterations, minus means the entire dataset
     args = parser.parse_args([]) # [] is needed if you're using Jupyter Notebook.
     
