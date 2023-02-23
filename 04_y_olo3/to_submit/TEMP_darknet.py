@@ -1,4 +1,3 @@
-# darknet.py
 from __future__ import division
 
 import torch 
@@ -7,7 +6,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import numpy as np
 from util import * 
-
+from mish_ import LinearActivation,Mish
 
 
 def get_test_input():
@@ -61,12 +60,6 @@ class DetectionLayer(nn.Module):
         super(DetectionLayer, self).__init__()
         self.anchors = anchors
 
-class Mish(nn.Module):
-     def __init__(self):
-         super().__init__()
-
-     def forward(self, x):
-         return x * torch.tanh(F.softplus(x))
 
 
 
@@ -118,10 +111,14 @@ def create_modules(blocks):
             if activation == "leaky":
                 activn = nn.LeakyReLU(0.1, inplace = True)
                 module.add_module("leaky_{0}".format(index), activn)
-
-            if activation == "mish":
+            elif activation == "mish":
                 activn = Mish()
                 module.add_module("mish_{0}".format(index), activn)
+            elif activation == "linear":
+                activn = LinearActivation()
+                module.add_module("linear_{0}".format(index), activn)
+            else:
+                raise ValueError(f"No activation:{activation}")
         
             #If it's an upsampling layer
             #We use Bilinear2dUpsampling
@@ -151,6 +148,8 @@ def create_modules(blocks):
                 filters = output_filters[index + start] + output_filters[index + end]
             else:
                 filters= output_filters[index + start]
+            if(len(x["layers"]) == 4):
+                filters = 1024
     
         #shortcut corresponds to skip connection
         elif x["type"] == "shortcut":
@@ -169,14 +168,15 @@ def create_modules(blocks):
     
             detection = DetectionLayer(anchors)
             module.add_module("Detection_{}".format(index), detection)
-        
         elif x["type"] == "maxpool":
-            stride = int(x["stride"])
-            size = int(x["size"])
-            assert size % 2
-            maxpool = nn.MaxPool2d(kernel_size=size, stride=stride, padding=size // 2)
+            # {'type': 'maxpool', 'stride': '1', 'size': '5'}
+            assert int(x['size']) % 2
+            maxpool = nn.MaxPool2d(kernel_size=int(x['size']), stride=int(x['stride']), padding=int(x['size']) // 2)
             module.add_module("maxpool_{0}".format(index), maxpool)
-                              
+        else:
+            print(x)
+            raise ValueError(f"Module:{x['type']} not defined")
+
         module_list.append(module)
         prev_filters = filters
         output_filters.append(filters)
@@ -197,52 +197,31 @@ class Darknet(nn.Module):
         for i, module in enumerate(modules):        
             module_type = (module["type"])
             
-            if module_type == "convolutional" or module_type == "upsample" or module_type == "maxpool":
+            if module_type in ["convolutional", "upsample", "maxpool"]:
                 x = self.module_list[i](x)
-                
     
             elif module_type == "route":
-                
-                # concat layers
                 layers = module["layers"]
                 layers = [int(a) for a in layers]
-                
+    
                 if (layers[0]) > 0:
                     layers[0] = layers[0] - i
     
-                if len(layers) == 1:    # 1 item in layer                 
+                if len(layers) == 1:
                     x = outputs[i + (layers[0])]
     
-                else:   # more than 1 item in layer 
-                    if len(layers) == 4:       # 4 items in layer                                      
-                        if (layers[1]) > 0:
-                            layers[1] = layers[1] - i
-
-                        if (layers[2]) > 0:
-                            layers[2] = layers[2] - i
-
-                        if (layers[3]) > 0:
-                            layers[3] = layers[3] - i
-
-                        map1 = outputs[i + layers[0]]
-                        map2 = outputs[i + layers[1]]
-                        map3 = outputs[i + layers[2]]
-                        map4 = outputs[i + layers[3]]
-                        x = torch.cat((map1, map2, map3, map4), 1)
-
-                    else:           # 2 items in layer                
-                        if (layers[1]) > 0:
-                            layers[1] = layers[1] - i
-        
-                        map1 = outputs[i + layers[0]]
-                        map2 = outputs[i + layers[1]]
-                        x = torch.cat((map1, map2), 1)
+                else:
+                    if (layers[1]) > 0:
+                        layers[1] = layers[1] - i
+    
+                    map1 = outputs[i + layers[0]]
+                    map2 = outputs[i + layers[1]]
+                    x = torch.cat((map1, map2), 1)
                 
-                
-            elif module_type == "shortcut":
+    
+            elif  module_type == "shortcut":
                 from_ = int(module["from"])
                 x = outputs[i-1] + outputs[i+from_]
-                
     
             elif module_type == 'yolo':        
                 anchors = self.module_list[i][0].anchors
@@ -261,122 +240,11 @@ class Darknet(nn.Module):
         
                 else:       
                     detections = torch.cat((detections, x), 1)
-                
-            
+        
             outputs[i] = x
         
         return detections
-    def load_weights_(self, weightfile, backbone=False):
-        '''
-        Load pretrained weight
-        '''
-        #Open the weights file
-        fp = open(weightfile, "rb")
-    
-        #The first 5 values are header information 
-        # 1. Major version number
-        # 2. Minor Version Number
-        # 3. Subversion number 
-        # 4,5. Images seen by the network (during training)
-        header = np.fromfile(fp, dtype = np.int32, count = 5)
-        self.header = torch.from_numpy(header)
-        self.seen = self.header[3]   
-        
-        weights = np.fromfile(fp, dtype = np.float32)
-        
-        ptr = 0
-        ''' 
-            0: looking for start point
-            1: Loading weight
-            2: End point
-        '''
-        stage = 1
-    
-        if(backbone):
-            stage = 0
 
-        for i in range(len(self.module_list)):
-            module_type = self.blocks[i + 1]["type"]
-    
-            #If module_type is convolutional load weights
-            #Otherwise ignore.
-            if(backbone):
-                # print(stage, self.blocks[i + 1])
-                if(stage == 2): break
-
-                if("backbone" in self.blocks[i + 1] and int(self.blocks[i + 1]["backbone"]) == 0):
-                    stage = 1
-                elif("backbone" in self.blocks[i + 1] and int(self.blocks[i + 1]["backbone"]) == 1):
-                    stage = 2
-
-                if(stage == 0): continue
-            
-            # print(self.blocks[i + 1])
-            # Load weight
-            if module_type == "convolutional":
-                model = self.module_list[i]
-                try:
-                    batch_normalize = int(self.blocks[i+1]["batch_normalize"])
-                except:
-                    batch_normalize = 0
-            
-                conv = model[0]
-                
-                
-                if (batch_normalize):
-                    bn = model[1]
-        
-                    #Get the number of weights of Batch Norm Layer
-                    num_bn_biases = bn.bias.numel()
-        
-                    #Load the weights
-                    bn_biases = torch.from_numpy(weights[ptr:ptr + num_bn_biases])
-                    ptr += num_bn_biases
-        
-                    bn_weights = torch.from_numpy(weights[ptr: ptr + num_bn_biases])
-                    ptr  += num_bn_biases
-        
-                    bn_running_mean = torch.from_numpy(weights[ptr: ptr + num_bn_biases])
-                    ptr  += num_bn_biases
-        
-                    bn_running_var = torch.from_numpy(weights[ptr: ptr + num_bn_biases])
-                    ptr  += num_bn_biases
-        
-                    #Cast the loaded weights into dims of model weights. 
-                    bn_biases = bn_biases.view_as(bn.bias.data)
-                    bn_weights = bn_weights.view_as(bn.weight.data)
-                    bn_running_mean = bn_running_mean.view_as(bn.running_mean)
-                    bn_running_var = bn_running_var.view_as(bn.running_var)
-        
-                    #Copy the data to model
-                    bn.bias.data.copy_(bn_biases)
-                    bn.weight.data.copy_(bn_weights)
-                    bn.running_mean.copy_(bn_running_mean)
-                    bn.running_var.copy_(bn_running_var)
-                
-                else:
-                    #Number of biases
-                    num_biases = conv.bias.numel()
-                
-                    #Load the weights
-                    conv_biases = torch.from_numpy(weights[ptr: ptr + num_biases])
-                    ptr = ptr + num_biases
-                
-                    #reshape the loaded weights according to the dims of the model weights
-                    conv_biases = conv_biases.view_as(conv.bias.data)
-                
-                    #Finally copy the data
-                    conv.bias.data.copy_(conv_biases)
-                    
-                #Let us load the weights for the Convolutional layers
-                num_weights = conv.weight.numel()
-                
-                #Do the same as above for weights
-                conv_weights = torch.from_numpy(weights[ptr:ptr+num_weights])
-                ptr = ptr + num_weights
-                
-                conv_weights = conv_weights.view_as(conv.weight.data)
-                conv.weight.data.copy_(conv_weights)
 
     def load_weights(self, weightfile):
         #Open the weights file

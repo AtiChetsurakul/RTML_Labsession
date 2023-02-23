@@ -1,4 +1,3 @@
-# utils.py
 from __future__ import division
 
 import torch 
@@ -198,17 +197,25 @@ def letterbox_image(img, inp_dim):
     canvas[(h-new_h)//2:(h-new_h)//2 + new_h,(w-new_w)//2:(w-new_w)//2 + new_w,  :] = resized_image
     
     return canvas
-
 def prep_image(img, inp_dim):
     """
-    Prepare image for inputting to the neural network. 
-    
-    Returns a Variable 
+    Prepare image for inputting to the neural network. Returns a tensor.
     """
     # pylint: disable=no-member
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = letterbox_image(img, (inp_dim, inp_dim))
     return torch.from_numpy(img.transpose(2, 0, 1)).float().div(255.0).unsqueeze(0)
+    
+# def prep_image(img, inp_dim):
+#     """
+#     Prepare image for inputting to the neural network. 
+    
+#     Returns a Variable 
+#     """
+#     img = (letterbox_image(img, (inp_dim, inp_dim)))
+#     img = img[:,:,::-1].transpose((2,0,1)).copy()
+#     img = torch.from_numpy(img).float().div(255.0).unsqueeze(0)
+#     return img
 
 def load_classes(namesfile):
     fp = open(namesfile, "r")
