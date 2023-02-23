@@ -1,16 +1,18 @@
 from .voc_dataset import VOCDataset
 from .coco_dataset import COCODataset
-
+from .city_terbodset import CityTurBoDataset
 __all__ = ["datasets", "collate_wrapper"]
 
 
 def datasets(ds, *args, **kwargs):
     ds = ds.lower()
-    choice = ["voc", "coco"]
+    choice = ["voc", "coco",'cityTurbo']
     if ds == choice[0]:
         return VOCDataset(*args, **kwargs)
     if ds == choice[1]:
         return COCODataset(*args, **kwargs)
+    elif ds == choice[-1]:
+        return CityTurBoDataset(*args,**kwargs)
     else:
         raise ValueError("'ds' must be in '{}', but got '{}'".format(choice, ds))
     
