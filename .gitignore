@@ -9,3 +9,4 @@
 *.atikeep
 *.pyc
 05_MARKRCNN/pyProj/pytorch_mask_rcnn/gpu_info.json
+05_MARKRCNN/unnett/result/*
