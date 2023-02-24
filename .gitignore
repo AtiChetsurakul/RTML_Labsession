@@ -10,5 +10,8 @@
 *.pyc
 05_MARKRCNN/pyProj/pytorch_mask_rcnn/gpu_info.json
 05_MARKRCNN/unnett/result/*
+06_wesersteinGGG/data/*
+06_wesersteinGGG/torch_data/*
+06_wesersteinGGG/runs/*
 *.pyc
 *.json
