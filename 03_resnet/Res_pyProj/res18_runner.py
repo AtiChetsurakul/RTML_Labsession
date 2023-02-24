@@ -82,7 +82,7 @@ optimizer = optim.Adam(params_to_update, lr=0.01)
 
 # resnet.is_debug = True
 best_model, val_acc_history, loss_acc_history = train_model(
-    resnet, dataloaders, criterion, optimizer, device, 25, 'Result/resnet18_bestsofar')
+    resnet, dataloaders, criterion, optimizer, device, 5, 'Result/resnet18_bestsofar')
 
 
 np.save('Result/val_acc_history_resnet18_25.npy', np.array(val_acc_history))

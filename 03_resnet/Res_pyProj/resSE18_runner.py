@@ -16,7 +16,7 @@ from model_training_ import train_model
 # Prepare the dataset
 # Set device to GPU or CPU
 
-device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
 
 # Allow augmentation transform for training set, no augementation for val/test set
 
@@ -83,7 +83,7 @@ params_to_update = resnet.parameters()
 # optimizer = optim.SGD(params_to_update, lr=0.01, weight_decay = 1e-4, momentum = 0.9)
 optimizer = optim.Adam(params_to_update, lr=0.01)
 best_model, val_acc_history, loss_acc_history = train_model(
-    resnet, dataloaders, criterion, optimizer, device, 25, 'Result/SEresnet18_bestsofar')
+    resnet, dataloaders, criterion, optimizer, device, 10, 'Result/SEresnet18_bestsofar')
 
 
 np.save('Result/val_acc_history_SEresnet18_25.npy', np.array(val_acc_history))
