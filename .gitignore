@@ -15,5 +15,8 @@
 06_wesersteinGGG/runs/*
 *.pyc
 *.json
-
-/root/keep_lab/RTML_Labsession/06_wesersteinGGG/to_reportlab6/task1/*
+*ubyte
+*.gz
+06_wesersteinGGG/to_reportlab6/task1/data/*
+06_wesersteinGGG/to_reportlab6/task1/torch_data/*
+06_wesersteinGGG/to_reportlab6/task1/runs/*
