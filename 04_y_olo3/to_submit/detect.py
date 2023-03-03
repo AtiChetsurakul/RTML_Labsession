@@ -43,6 +43,7 @@ assert inp_dim > 32
 
 # If there's a GPU availible, put the model on GPU
 if CUDA:
+    torch.cuda.set_device(2)
     model.cuda()
 
 # Set the model in evaluation mode

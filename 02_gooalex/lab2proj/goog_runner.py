@@ -74,7 +74,7 @@ optimizer = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
 dataloaders = {'train': train_dataloader, 'val': val_dataloader}
 
 best_model, val_acc_history, loss_acc_history = train_model(
-    goog_module.to(device), dataloaders, criterion, device, optimizer, 15, 'goo_sequential_lr_0.001_bestsofar', is_inception=True)
+    goog_module.to(device), dataloaders, criterion, device, optimizer, 10, 'goo_sequential_lr_0.001_bestsofar', is_inception=True)
 
 with open('/root/models/try.atikeep', 'wb') as handle:
     pickle.dump((val_acc_history, loss_acc_history), handle)

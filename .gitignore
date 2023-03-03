@@ -17,6 +17,7 @@
 *.json
 *ubyte
 *.gz
+*.pyc
 06_wesersteinGGG/to_reportlab6/*
 06_wesersteinGGG/to_reportlab6/task1/data/*
 06_wesersteinGGG/to_reportlab6/task1/torch_data/*
